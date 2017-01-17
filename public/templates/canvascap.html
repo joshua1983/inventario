@@ -1,0 +1,116 @@
+
+<div class="row">
+	<div ng-repeat="cap in capacidades" class="col-xs-2 panel panel-default panel-success">
+	  <div class="panel-heading">
+		<p class="panel-title fuente_titulo"><strong>{{cap.nombre}}</strong></p>
+	  </div>
+	  <div class="panel-body">
+		<div align="center" class="fondo_{{app.pivot.nivel}}" ng-repeat="app in cap.apps">
+			<div style="text-align: center; float: left;">
+				<span class="glyphicon glyphicon-equalizer" aria-label="Left Align" aria-hidden="true"></span>
+			</div>
+			<a href="#/editAppCaract/{{app.id}}/{{app.pivot.nivel}}/{{cap.id}}">{{app.nombre_aplicacion}}</a>
+			<div style="text-align: center; float: right; cursor: pointer;">
+				<span class="glyphicon glyphicon-remove-circle " ng-click="borrarApp(app.id, cap.id)" aria-label="Right Align" aria-hidden="true"></span>
+			</div>
+		</div>
+		<div align="center" class="fondo_{{mod.pivot.nivel}}" ng-repeat="mod in cap.mods">
+			<a href="#/editModCaract/{{mod.id}}/{{mod.pivot.nivel}}/{{cap.id}}">{{mod.nombre_modulo}}</a>
+			<div ng-if="isAdmin()" style="text-align: center; float: right; cursor: pointer;">
+				<span class="glyphicon glyphicon-remove-circle " ng-click="borrarMod(mod.id, cap.id)" aria-label="Right Align" aria-hidden="true"></span>
+			</div>
+			
+		</div>
+	  </div>
+	</div>
+</div>
+
+<div class="row col-xs-6">
+	<div class="panel panel-default">
+		<table class="table">
+			<thead>
+				<th>Escala</th>
+				<th>Color</th>
+				<th>Descripcion</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="">0%</td>
+					<td class="fondo_0"></td>
+					<td class="">No existe ninguna evidencia de implementación tecnológica, definición del proceso o entrenamiento del personal para soportar la capacidad.</td>
+				</tr>
+				<tr>
+					<td class="">17%</td>
+					<td class="fondo_17"></td>
+					<td class="">Existe un mínimo avance en algunos de los componentes  tecnológicos, de procesos o de formación al personal sobre la capacidad. Especialmente en la incorporación de elementos Tecnológico, el levantamiento de la documentación de los procedimientos o procesos en formatos AS-IS o el conocimiento básico o  empírico de los proceso y sistemas de información que soportan la capacidad.</td>
+				</tr>
+				<tr>
+					<td class="">33%</td>
+					<td class="fondo_33"></td>
+					<td class="">Existe un mínimo avance en dos componentes de la capacidad (tecnológico, procesos, formación o capacitación). Especialmente en la incorporación de elementos Tecnológico o el levantamiento de la documentación en la descripción de los procesos o procedimientos en formato AS-IS.</td>
+				</tr>
+				<tr>
+					<td class="">50%</td>
+					<td class="fondo_50"></td>
+					<td class="">Existe un mínimo avance en los tres componentes de la capacidad (tecnológico, procesos, formación o capacitación).  Especialmente en la incorporación de elementos Tecnológico o el levantamiento de la documentación en la descripción de los procesos o procedimientos en formato AS-IS.</td>
+				</tr>
+				<tr>
+					<td class="">67%</td>
+					<td class="fondo_67"></td>
+					<td class="">Existe una implementación completa de algunos de los componentes de la capacidad, principalmente en la automatización tecnología de los procesos o la documentación completa de los  procesos y procedimientos en formatos AS-Is y To-be. </td>
+				</tr>
+				<tr>
+					<td class="">83%</td>
+					<td class="fondo_83"></td>
+					<td class="">Existe una implementación completa en dos de los componentes de la capacidad, principalmente en la automatización tecnología de los procesos y la documentación completa de los  procesos y procedimientos en formatos AS-Is y To-be. </td>
+				</tr>
+				<tr>
+					<td class="">100%</td>
+					<td class="fondo_100"></td>
+					<td class="">Los componentes de las capacidades están totalmente desarrolladas, desde la automatización completa de los procesos, la documentación completa de los  procesos y procedimientos en formatos AS-Is y To-be y la capacitación a todo el recurso humano (técnico y funcional) que soporta la capacidad.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="col-xs-6">
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">Capacidades | 
+			<a ng-if="isAdmin()" href="#/addAppCaract"><strong>Agregar Aplicaci&oacuten</strong></a> |
+			<a ng-if="isAdmin()" href="#/addModCaract"><strong>Agregar Modulo</strong></a>
+
+		</div>
+		<div class="panel-body">
+			
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="cap in capacidades">{{cap.nombre}}
+					<div class="panel panel-default">
+						<div class="panel-heading">Aplicaciones</div>
+						<div class="panel-body">
+							<ul>
+								<li ng-repeat="app in cap.apps"> 
+									<a href="#/editAppCaract/{{app.id}}/{{app.pivot.nivel}}/{{cap.id}}">
+										{{app.nombre_aplicacion}}
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Modulos</div>
+						<div class="panel-body">
+							<ul>
+								<li ng-repeat="modus in cap.mods">
+									<a href="#/editModCaract/{{modus.id}}/{{modus.pivot.nivel}}/{{cap.id}}">
+										{{modus.nombre_modulo}}
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

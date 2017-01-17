@@ -1,0 +1,39 @@
+<div class="row">
+
+	<div class="col-xs-2">
+		<dir-restriccion modulo="Servidores" permiso="agregar" opcion="borrar">
+			<a class="btn btn-primary btn-xs" href="#/createConf">Nuevo Servidor</a>
+		</dir-restriccion>
+	</div>
+	
+
+</div>
+<div class="row">
+	<div class="panel-body">
+		<ul class="list-group">
+			
+			<li class="list-group-item" ng-repeat="conf in Configuraciones">
+
+				<a ng-if="agregar" id="nombreServ" class="btn btn-primary btn-xs" ng-click="seleccionar(conf.id)" href="#">{{conf.servidor}} - {{conf.ip}} </a>
+				<a ng-if="editar" id="nombreServ" class="btn btn-primary btn-xs"  href="#/editConf/{{conf.id}}">{{conf.servidor}} - {{conf.ip}}</a>
+
+				
+				<div class="pull-right action-buttons">
+					<dir-restriccion modulo="Servidores" permiso="editar" opcion="borrar">
+					<a class="pencil" href="#/editConf/{{conf.id}}">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+					</dir-restriccion>
+					<dir-restriccion modulo="Servidores" permiso="borrar" opcion="borrar">
+					<a ng-click="remove(conf.id)" class="trash" style="cursor: pointer">
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+					</dir-restriccion>
+				</div>
+				
+				
+			</li>
+		</ul>
+
+	</div>
+</div>

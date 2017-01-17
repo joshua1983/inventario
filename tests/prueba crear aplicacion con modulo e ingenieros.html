@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://172.16.200.181/" />
+<title>prueba crear aplicacion con modulo e ingenieros</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">prueba crear aplicacion con modulo e ingenieros</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>inventario/index.html#/homeApp</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=div.col-xs-12</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Nueva aplicacion</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=txtIngenieroTec</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=txtIngenieroTec</td>
+	<td>label=Josue Barrios Rodriguez</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;15&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=txtIngenieroServ</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=txtIngenieroServ</td>
+	<td>label=Josue Barrios Rodriguez</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#txtIngenieroServ &gt; option[value=&quot;15&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=txtCodigoAplicacion</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtCodigoAplicacion</td>
+	<td>test1code</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtNombreAplicacion</td>
+	<td>test2nombre</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.addOracion.elements[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>document.addOracion.elements[4]</td>
+	<td>label=En producción</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option.form-control</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.addOracion.elements[6]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=test1code - test2nombre</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Agregar Módulo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtNombre</td>
+	<td>mod1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=txtFormulario</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtFormulario</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtProceso</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtReportes</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtTablas</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>document.addModulo.elements[5]</td>
+	<td>label=En Implementación</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//option[@value='2']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selTipoModulo</td>
+	<td>label=Cliente Servidor</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#selTipoModulo &gt; option.form-control</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.addModulo.elements[7]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=mod1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Agregar Ingeniero</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Alexander</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Agregar Funcional</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Liliana Martinez Porras</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Aplicaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtPwd</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.glyphicon.glyphicon-trash</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Salir</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

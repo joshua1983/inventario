@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="panel-body">
+
+		<div class="col-xs-11">
+			<label>Buscar: <input class="form-control" ng-model="textoBuscar"></label>
+		</div>
+		<dir-restriccion modulo="Ingenieros" permiso="agregar" opcion="borrar">
+		<div class="col-xs-1">
+			<a  class="btn btn-primary btn-xs"  href="#/createIng">Nuevo Ingeniero</a>
+		</div>
+
+		</dir-restriccion>
+		<div class="col-xs-12">
+
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="ing in Ingenieros | filter:textoBuscar">
+					<a ng-if="agregar" ng-click="seleccionar(ing.id)" href="#">{{ing.nombres}}</a>
+					<a ng-if="editar" href="#/editIng/{{ing.id}}">{{ing.nombres}}</a>
+					
+					<div ng-if="editar" class="pull-right action-buttons">
+				<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="borrar">
+						<a href="#/editIng/{{ing.id}}">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+				</dir-restriccion>
+				<dir-restriccion modulo="Ingenieros" permiso="borrar" opcion="borrar">
+						<a ng-click="remove(ing.id)" class="trash">
+							<span class="glyphicon glyphicon-trash"></span>
+						</a>
+				</dir-restriccion>
+					</div>
+					<p>
+						<ul>
+							<li>Nombres: {{ing.nombres}}</li>
+							<li>Apellidos: {{ing.apellidos}}</li>
+							<li>Correo: {{ing.correo}}</li>
+						</ul>
+					</p>
+					
+				</li>
+			</ul>
+
+		</div>
+		
+		
+	</div>
+</div>

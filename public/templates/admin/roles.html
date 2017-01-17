@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="alert">{{nombre}}</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				Gestion de permisos
+			</div>
+			<div class="panel-body">
+				<label for="sel_ing">Seleccione el Ingeniero</label>
+				<select id="sel_ing" class="form-control" ng-options="item.id as item.nombres +' '+ item.apellidos for item in Ingenieros" ng-model="id_ingeniero" name="sel_ing">
+				</select>		
+			</div>
+			<div class="panel-body">
+				<label for="sel_mod">Seleccione la caracteristica</label>
+				<select id="sel_mod" class="form-control" ng-model="Permisos.modulo" name="sel_ing" ng-change="seleccionar()">
+					<option value="-1">Seleccione la opcion</option>
+					<option value="Aplicaciones">Aplicaciones</option>
+					<option value="Modulos">Modulos</option>
+					<option value="Ingenieros">Ingenieros</option>
+					<option value="Funcionales">Funcionales</option>
+					<option value="Servidores">Servidores</option>
+					<option value="Logs">Eventos</option>
+				</select>		
+			</div>
+	</div>
+			<table class="table">
+			<legend>Seleccione los permisos a aplicar</legend>
+			        <thead>
+			                <th>Agregar</th>
+			                <th>Actualizar</th>
+			                <th>Borrar</th>
+			                <th>Ver</th>
+			               <!-- <th>Administrador</th> -->
+			        </thead>
+					<tbody>
+					        <tr>
+				                <td><input id="chk_add" type="checkbox" name="chk_add" ng-model="Permisos.agregar"></td>
+				                <td><input id="chk_upd" type="checkbox" name="chk_upd" ng-model="Permisos.actualizar"></td>
+				                <td><input id="chk_del" type="checkbox" name="chk_del" ng-model="Permisos.borrar"></td>
+				                <td><input id="chk_view" type="checkbox" name="chk_view" ng-model="Permisos.ver"></td>
+				                <td><input style="visibility:hidden" id="chk_admin" type="checkbox" name="chk_admin" ng-model="Permisos.administrador"></td>
+					        </tr>
+					</tbody>
+			</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12" align="center">
+		<button class="btn btn-success" ng-click="guardarPermisos()">Guardar</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="alert alert-info" id="div_mensajes">{{mensaje}}</div>	
+	</div>
+	
+</div>

@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="panel-body">
+
+	<div class="col-xs-11">
+			<label>Buscar: <input class="form-control" ng-model="textoBuscar"></label>
+	</div>
+<dir-restriccion modulo="Funcionales" permiso="agregar" opcion="borrar">
+	<div class="col-xs-1">
+		<a  class="btn btn-primary btn-xs"  href="#/createFunc">Nuevo Funcional</a>
+	</div>
+</dir-restriccion>
+	<div class="col-xs-12">
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="fun in Funcionales | filter:textoBuscar">
+			
+				<a ng-if="agregar" ng-click="seleccionar(fun.id)" href="#">{{fun.nombres}} {{fun.apellidos}}</a>
+				<dir-restriccion modulo="Funcionales" permiso="editar" opcion="deshabilitar">
+				<a ng-if="editar" href="#/editFunc/{{fun.id}}">{{fun.nombres}} {{fun.apellidos}}</a>
+				</dir-restriccion>
+				
+				<div class="pull-right action-buttons">
+				<dir-restriccion modulo="Funcionales" permiso="editar" opcion="borrar">
+					<a href="#/editFunc/{{fun.id}}">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</dir-restriccion>
+				<dir-restriccion modulo="Funcionales" permiso="borrar" opcion="borrar">
+					<a ng-click="remove(fun.id)" class="trash">
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+				</dir-restriccion>
+				</div>
+				<p>
+					<ul>
+						<li>Nombres: {{fun.nombres}}</li>
+						<li>Apellidos: {{fun.apellidos}}</li>
+						<li>Correo: {{fun.correo}}</li>
+					</ul>
+				</p>
+				
+			</li>
+		</ul>
+	</div>
+	
+		
+		
+	</div>
+</div>

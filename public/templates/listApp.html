@@ -1,0 +1,88 @@
+<div class="row">
+
+	<div class="col-xs-12">
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			Cantidad de aplicaciones registradas: {{InventarioApp.length}}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="col-xs-11">
+			<label>Buscar: <input class="form-control" ng-model="textoBuscar"></label>	
+		</div>
+		<div class="col-xs-1" align="left">
+			<dir-restriccion modulo="Aplicaciones" permiso="agregar" opcion="borrar">
+				<a class="btn btn-primary btn-xs" href="#/createApp">Nueva aplicacion</a>
+			</dir-restriccion>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="panel-body ">
+		
+		<div class="col-xs-12">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Aplicacion</th>
+						<th>Ing DBA</th>
+						<th>Ing Servicios</th>
+						<th>Estado</th>
+						<th>Modulos</th>
+						<th>Produccion</th>
+						<th>Implementacion</th>
+						<th>Retirado</th>
+						<th>En Retiro</th>
+						<th>No Utilizado</th>
+						<th>No Funcional</th>
+						<th>Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="app in InventarioApp | filter:textoBuscar" >
+						<td>{{$index + 1}}</td>
+						<td>
+							<a href="#/editApp/{{app.id}}">{{app.codigo_aplicacion}} - {{app.nombre_aplicacion}}</a>
+						</td>
+						<td><small>Ing. DBA: <strong>{{app.nombre_dba}}</strong> </small></td>
+						<td><small>Ing. Servicios: <strong>{{app.nombre_serv}}</strong> </small></td>
+						<td>
+							<small ng-if="app.estado == 1"><strong>En Produccion</strong> </small>
+							<small ng-if="app.estado == 2"><strong>En Implementacion</strong> </small>
+							<small ng-if="app.estado == 3"><strong>En Retiro</strong> </small>
+							<small ng-if="app.estado == 4"><strong>Retirado</strong> </small>
+							<small ng-if="app.estado == 5"><strong>No Funcional</strong> </small>
+							<small ng-if="app.estado == 6"><strong>No Utilizado</strong> </small>
+						</td>
+						<td align="center" ><small> <span class="badge ">{{app.cant_mods}}</span> </small></td>
+						<td align="center" ><small> <span class="badge">{{app.cant_mods_prod}}</span>  </small></td>
+						<td align="center" ><small> <span class="badge">{{app.cant_mods_impl}}</span> </small></td>
+						<td align="center" ><small> <span class="badge">{{app.cantidad_mods_ret}}</span>  </small></td>
+						<td align="center" ><small> <span class="badge">{{app.cantidad_mods_en_ret}}</span>  </small></td>
+						<td align="center" ><small> <span class="badge">{{app.cantidad_mods_no_util}}</span>  </small></td>
+						<td align="center" ><small> <span class="badge">{{app.cantidad_mods_no_fun}}</span>  </small></td>
+						<td>
+							<div class="pull-right action-buttons">
+								<dir-restriccion modulo="Aplicaciones" permiso="editar" opcion="borrar">
+								<a href="#/editApp/{{app.id}}">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								</dir-restriccion>
+								<dir-restriccion modulo="Aplicaciones" permiso="borrar" opcion="borrar">
+								<a ng-click="remove(app.id)" class="trash">
+									<span class="glyphicon glyphicon-trash"></span>
+								</a>
+								</dir-restriccion>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+</div>

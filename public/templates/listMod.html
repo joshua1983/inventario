@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="panel-body">
+		<a href="#/createMod">Nuevo Modulo </a>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="mod in Modulos">
+				<a ng-if="agregar" ng-click="seleccionar(mod.id)" href="#">{{mod.nombre_modulo}}</a>
+				<a ng-if="editar" href="#/editMod/{{mod.id}}">{{mod.nombre_modulo}}</a>
+				
+				<div ng-if="editar" class="pull-right action-buttons">
+					<a href="#/editMod/{{mod.id}}">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+					<a ng-click="remove(mod.id)" class="trash">
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+				</div>
+				<p>
+					<ul>
+						<li>Nombre modulo: {{mod.nombre_modulo}}</li>
+						<li>Tipo modulo: {{mod.tipomodulo}}</li>
+					</ul>
+				</p>
+				
+			</li>
+		</ul>
+	</div>
+</div>

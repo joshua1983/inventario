@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="alert alert-info" ng-bind-html="mensajeDetalle"></div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12" align="center">
+		<a href="" ng-click="anterior()" class="btn btn-success">Anterior</a>
+		<a href="" ng-click="reload()" class="btn btn-success">Hoy</a>
+		<a href="" ng-click="siguiente()" class="btn btn-success">Siguiente</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<table class="table">
+			<thead>
+				<th>Aplicaci&oacute;n</th>
+				<th>{{fecha[0].fechaEvento}}</th>
+				<th>{{fecha[1].fechaEvento}}</th>
+				<th>{{fecha[2].fechaEvento}}</th>
+				<th>{{fecha[3].fechaEvento}}</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="app in aplicaciones | filter:filtarEstado">
+					<td > <span  ng-bind-html="app.barra_app"></span>  
+					{{app.nombre_visor || app.nombre_aplicacion}}
+					</td>
+					<td id="data_{{app.id}}_0">
+					
+					</td>
+					<td id="data_{{app.id}}_1">
+					
+					</td>
+					<td id="data_{{app.id}}_2">
+
+					</td>
+					<td id="data_{{app.id}}_3">
+
+					</td>
+				</tr>
+			</tbody>
+			
+		</table>
+	</div>
+</div>

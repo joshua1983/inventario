@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://172.16.200.181/" />
+<title>prueba creacion capacidades y caracteristicas</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">prueba creacion capacidades y caracteristicas</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>inventario/index.html#/homeCap</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtPwd</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Capacidades</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=strong</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtNombreCar</td>
+	<td>cap1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[2]/strong</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selCar</td>
+	<td>label=cap1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;0&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=txtNombre</td>
+	<td>car1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selNivel</td>
+	<td>label=Existe AS-IS y esta implementado</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[3]/strong</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>id=selApp</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selApp</td>
+	<td>label=Inventario de Software</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//option[@value='31']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selCar</td>
+	<td>label=cap1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#selCar &gt; option.ng-binding.ng-scope</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selCapEsp</td>
+	<td>label=car1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#selCapEsp &gt; option.ng-binding.ng-scope</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=selNivel</td>
+	<td>label=Parcialmente soportada</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#selNivel &gt; option[value=&quot;1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span[name=&quot;borrarAplicacion&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Esta seguro de eliminar la aplicacion?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span[name=&quot;borrarCaracteristicas&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Esta seguro de eliminar la caracteristica?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=borrarCapacidad</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Esta seguro de eliminar la categoria?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Salir</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

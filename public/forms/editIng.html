@@ -1,0 +1,92 @@
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtNombres">Nombres</label>
+	<input id="txtNombres" type="text" placeholder="nombres" ng-model="ingeniero.nombres" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtApellidos">Apellidos</label>
+	<input id="txtApellidos" type="text" placeholder="apellidos" ng-model="ingeniero.apellidos" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtCorreos">Correo</label>
+	<input id="txtCorreos" type="text" placeholder="email" ng-model="ingeniero.correo" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtTelefono">Telefono</label>
+	<input id="txtTelefono" type="text" placeholder="telefono" ng-model="ingeniero.telefono" class="form-control">
+</div>
+</dir-restriccion>
+
+
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtCelular">Celular</label>
+	<input id="txtCelular" type="text" placeholder="celular" ng-model="ingeniero.celular" class="form-control">
+</div>
+
+</dir-restriccion>
+
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtExtension">Extension</label>
+	<input id="txtExtension" type="text" placeholder="extension" ng-model="ingeniero.extension" class="form-control">
+</div>
+</dir-restriccion>
+
+<div class="required-field-block">
+	<div class="checkbox">
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+		<label for="chkSI">
+			<input id="chkSI" class="checkbox" type="checkbox"
+		   ng-model="ingeniero.trabajasi">Trabaja en SI
+		</label>
+	</div>
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+</div>
+
+<div class="required-field-block">
+	<div class="checkbox">
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="deshabilitar">
+		<label for="chkTI">
+			<input id="chkTI" class="checkbox" type="checkbox"
+		   ng-model="ingeniero.trabajati">Trabaja en TI
+		</label>
+	</div>
+</dir-restriccion>
+</div>
+
+<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="borrar">
+<button class="btn btn-primary" ng-click="submit($parent.ingeniero)">{{ $parent.settings.action }}</button>
+
+</dir-restriccion>
+
+<div class="col-xs-12">
+	<table class="table">
+		<thead>
+			<th>Aplicacion</th>
+			<th>Modulo</th>
+			<th>Estado</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="apps in ingeniero.aplicaciones">
+				<td>{{apps.nombre_aplicacion}}</td>
+				<td>{{apps.nombre_modulo}}</td>
+				<td>{{apps.Estado}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

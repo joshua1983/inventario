@@ -1,0 +1,249 @@
+<h1>{{ $parent.settings.pageTitle }}</h1>
+
+
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+
+<div class="row" >
+	<div class="col-xs-12 panel panel-info">
+
+		<div class="panel-heading">Informacion de la aplicaci&oacute;n</div>
+		<div class="panel-body">
+			
+		<dir-restriccion modulo="Aplicaciones" permiso="editar" opcion="deshabilitar">
+
+			<div class="required-field-block">
+				<label for="txtIngenieroTec">Ingeniero DBA</label>
+				<select id="txtIngenieroTec" class="form-control" ng-options="item.id as item.nombres +' '+ item.apellidos for item in ingenieros" ng-model="aplicacion.dba_id">
+				<option value="">Seleccione un ingeniero</option>
+				</select>
+			</div>
+		
+		</dir-restriccion>
+		<dir-restriccion modulo="Aplicaciones" permiso="editar" opcion="deshabilitar">
+			<div class="required-field-block">
+				<label for="txtIngenieroServ">Ingeniero de Servidor</label>
+				<select id="txtIngenieroServ" class="form-control" ng-options="item.id as item.nombres +' '+ item.apellidos for item in ingenieros" ng-model="aplicacion.tec_id">
+				<option value="">Seleccione un ingeniero</option>
+				</select>
+			</div>
+		</dir-restriccion>
+
+		<dir-restriccion modulo="Aplicaciones" permiso="editar" opcion="deshabilitar">
+			<div class="required-field-block">
+				<label for="txtCodigoAplicacion">C&oacute;digo Aplicaci&oacute;n</label>
+				<input id="txtCodigoAplicacion" type="text" placeholder="Texto corto" ng-model="aplicacion.codigo_aplicacion" class="form-control">
+
+			</div>
+
+		</dir-restriccion>
+		<dir-restriccion modulo="Aplicaciones" permiso="editar" opcion="deshabilitar">
+			<div class="required-field-block">
+				<label for="txtNombreAplicacion">Nombre aplicaci&oacute;n</label>
+				<input id="txtNombreAplicacion" type="text" placeholder="Titulo" ng-model="aplicacion.nombre_aplicacion" class="form-control">
+
+			</div>
+
+		</dir-restriccion>
+		<dir-restriccion modulo="Aplicaciones" permiso="editar" opcion="deshabilitar">
+			<div class="required-field-block">
+				<label for="txtNombreVisor">Nombre visor</label>
+				<input id="txtNombreVisor" type="text" placeholder="Nombre" ng-model="aplicacion.nombre_visor" class="form-control">
+
+			</div>
+
+		</dir-restriccion>
+
+		<dir-restriccion modulo="Aplicaciones" permiso="editar" opcion="deshabilitar">
+
+			<div class="required-field-block">
+				<label for="selEstado" >Estado</label>
+				<select ng-model="aplicacion.estado" class="form-control">
+					
+					<option class="form-control" ng-selected="aplicacion.estado == 1" value="1">En producci&oacute;n</option>
+					<option class="form-control" ng-selected="aplicacion.estado == 2" value="2">En Implementaci&oacute;n</option>
+					<option class="form-control" ng-selected="aplicacion.estado == 3" value="3">En Retiro</option>
+					<option class="form-control" ng-selected="aplicacion.estado == 4" value="4">Retirado</option>
+				
+				</select>
+
+			</div>
+		</dir-restriccion>
+		<br>
+		<dir-restriccion modulo="Modulos" permiso="agregar" opcion="borrar">
+			<div align="center" class="row">
+				<button class="btn btn-primary" ng-click="submit($parent.aplicacion)">{{ $parent.settings.action }}</button>
+				<a ng-if="$parent.settings.edicion" class="btn btn-success" href="#/addConf/{{aplicacion.id}}">Agregar Servidor</a>
+				<a ng-if="$parent.settings.edicion" class="btn btn-success" href="#/addMod/{{aplicacion.id}}">Agregar M&oacute;dulo</a>
+				<a ng-if="$parent.settings.edicion" class="btn btn-success" href="#/createLog/{{aplicacion.id}}">Agregar Registro de Evento</a>
+			</div>
+		</dir-restriccion>
+		</div>
+	</div>
+
+</div>	
+<br>
+<br>
+<div class="row">
+
+	<accordion close-others="oneAtATime">
+		
+		<accordion-group  heading="Servidores" is-open="false">
+			<div class="col-xs-11">
+				<div class="panel-body">
+					<div class="required-field-block">
+						<ul class="list-group">
+							<li class="list-group-item" ng-repeat="conf in aplicacion.Configuraciones">
+								<a href="#/editConf/{{conf.configuracion_id}}">{{conf.servidor}} - {{conf.ip}}</a>
+								<div class="pull-right action-buttons">
+									<dir-restriccion modulo="Servidores" permiso="editar" opcion="borrar">
+										<a href="#/editConf/{{conf.configuracion_id}}">
+											<span class="glyphicon glyphicon-pencil"></span>
+										</a>
+									</dir-restriccion>
+									<dir-restriccion modulo="Servidores" permiso="borrar" opcion="borrar">
+										<a ng-click="borrarConfiguracion(conf.id)" class="trash">
+											<span class="glyphicon glyphicon-trash"></span>
+										</a>
+									</dir-restriccion>
+								</div>
+								<p>
+									<ul>
+										<li><strong>Nombre:</strong> {{conf.servidor}}</li>
+										<li><strong>IP:</strong> {{conf.ip}}</li>
+										
+									</ul>
+								</p>							
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</accordion-group>
+		<accordion-group  heading="Modulos" is-open="false">
+			<div class="col-xs-11">
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="txtBuscarMod">Buscar</label>
+						<input type="text" id="txtBuscarMod" class="form-control" ng-model="buscmod">
+					</div>
+					
+
+					<dir-restriccion modulo="Modulos" permiso="agregar" opcion="borrar">
+						<a href="#/createMod">Nuevo Modulo </a>
+					</dir-restriccion>
+
+					<table class="table">
+						
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nombre Modulo</th>
+								<th>Contenido</th>
+								<th>Tipo Modulo</th>
+								<th>Estado</th>
+								<th>Ingeniero Principal</th>
+								<th>Funcional Principal</th>
+								<th>Opciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="mod in aplicacion.Modulos  | filter:buscmod">
+								<td> {{$index +1}} </td>
+								<td>
+									<a  href="#/editMod/{{mod.id}}">{{mod.nombre_modulo}}</a>
+								</td>
+								<td>
+
+									<small>Ingenieros: <span class="badge badge-primary"> {{mod.ingenieros.length}}</span> </small>  <br>
+									<small>Funcionales: <span class="badge "> {{mod.funcionales.length}}</span>  </small>	
+									
+								</td>
+								<td>
+									<div ng-switch on="mod.tipomodulo">
+										<div ng-switch-when="1">Cliente Servidor</div>
+										<div ng-switch-when="2">Web</div>
+										<div ng-switch-when="3">Cloud</div>
+										<div ng-switch-when="4">Movil</div>
+									</div>
+								</td>
+								<td>
+									<div ng-switch on="mod.estado">
+										<div ng-switch-when="1">En producción</div>
+										<div ng-switch-when="2">En Implementación</div>
+										<div ng-switch-when="3">En Retiro</div>
+										<div ng-switch-when="4">Retirado</div>
+										<div ng-switch-when="5">No Funcional</div>
+										<div ng-switch-when="6">No Utilizado</div>
+									</div>	
+								</td>
+								<td>{{getPrincipal(mod.ingenieros)}}</td>
+								<td>{{getPrincipal(mod.funcionales)}}</td>
+								<td>
+									<div class="pull-right action-buttons">
+											<dir-restriccion modulo="Modulos" permiso="editar" opcion="borrar">
+												<a href="#/editMod/{{mod.id}}">
+													<span class="glyphicon glyphicon-pencil"></span>
+												</a>
+											</dir-restriccion>
+											<dir-restriccion modulo="Modulo" permiso="borrar" opcion="borrar">
+												<a  ng-click="borrarModulo(mod.id)" class="trash" style="cursor: pointer">
+													<span class="glyphicon glyphicon-trash"></span>
+												</a>
+											</dir-restriccion>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</accordion-group> <!-- cierre panel modulos -->
+		<accordion-group  heading="Eventos" is-open="false">
+
+		<div class="col-xs-12" align="center">
+			<a class="btn btn-success" href="visor.html" target="_blank">Ver Pagina</a>
+		</div>
+
+		<div class="col-xs-12">
+		
+
+			<table class="table">
+				<thead>
+					<th>Id</th>
+					<th>Aplicacion</th>
+					<th>Mensaje publico</th>
+					<th>Mensaje privado</th>
+					<th>Fecha evento</th>
+					<th>Fecha resolucion</th>
+					<th>Opcion</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="log in aplicacion.Logs">
+						<td>{{log.Id}}</td>
+						<td>{{aplicacion.nombre_aplicacion}}</td>
+						<td>{{log.mensaje_publico}}</td>
+						<td>{{log.mensaje_privado}}</td>
+						<td>{{log.fecha_evento | FormatoFecha}}</td>
+						<td>{{log.fecha_resolucion | FormatoFecha}}</td>
+						<td>
+							<a href="#/editLog/{{log.Id}}">Editar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+		
+
+		</accordion-group>
+	</accordion>
+</div>
+
+
+
+	
+
+
+
+

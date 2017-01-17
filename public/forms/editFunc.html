@@ -1,0 +1,46 @@
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+
+<dir-restriccion modulo="Funcionales" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtNombres">Nombres</label>
+	<input id="txtNombres" type="text" placeholder="nombres" ng-model="funcional.nombres" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Funcionales" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtApellidos">Apellidos</label>
+	<input id="txtApellidos" type="text" placeholder="apellidos" ng-model="funcional.apellidos" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Funcionales" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtCorreos">Correo</label>
+	<input id="txtCorreos" type="text" placeholder="email" ng-model="funcional.correo" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Funcionales" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtTelefono">Telefono</label>
+	<input id="txtTelefono" type="text" placeholder="telefono" ng-model="funcional.telefono" class="form-control">
+</div>
+
+</dir-restriccion>
+
+
+<dir-restriccion modulo="Funcionales" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtExtension">Extension</label>
+	<input id="txtExtension" type="text" placeholder="extension" ng-model="funcional.extension" class="form-control">
+</div>
+
+</dir-restriccion>
+
+<dir-restriccion modulo="Funcionales" permiso="editar" opcion="borrar">
+<button class="btn btn-primary" ng-click="submit($parent.funcional)">{{ $parent.settings.action }}</button>
+</dir-restriccion>

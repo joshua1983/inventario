@@ -1,0 +1,32 @@
+<script>
+    $(".nav li").on("click", function() {
+      $(".nav li").removeClass("active");
+      $(this).addClass("active");
+    });
+</script>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toogle="collapse" data-targer="#navbar-brand-centered">
+				<span class="sr-only">Navegacion</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+
+		<div class="collapse navbar-collapse" id="navbar-brand-centered" ng-controller="LoginCtrl">
+			<ul class="nav nav-pills">
+				<li><a  href="#/homeApp">Aplicaciones</a> </li>
+				<li><a  href="#/homeIng">Ingenieros</a> </li>
+				<li><a  href="#/homeFunc">Funcionales</a> </li>
+				<li><a  href="#/homeConf">Servidores</a> </li>
+				<li><a  href="#/homeInf">Informes</a> </li>
+				<li><a  href="#/homeCap">Capacidades</a> </li>
+				<li ng-if="isAdmin()"><a  href="#/homeAdmin">Administracion</a></li>
+				<li ng-if="estaAutenticado()==false"><a  href="#/loginPop">Login</a> </li>
+				<li ng-if="estaAutenticado()"><a href="#" ng-click="salir()">Salir</a> </li>
+			</ul>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,25 @@
+.slide {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.slide.ng-enter,
+.slide.ng-leave {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.slide.ng-enter {
+    left: 100%;
+}
+.slide.ng-enter-active {
+    left: 0;
+}
+.slide.ng-leave {
+    left: 0;
+}
+.slide.ng-leave-active {
+    left: -100%;
+}
+

@@ -1,0 +1,74 @@
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+<div class="row">
+	<div class="col-xs-4">
+		<dir-restriccion modulo="Servidores" permiso="agregar" opcion="borrar">
+			<a class="btn btn-primary btn-xs" ng-if="Configuracion.ip != ''" href="#/createLogServ/{{Configuracion.ip}}">Nuevo Registro Mantenimiento</a>
+		</dir-restriccion>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-10">
+	<dir-restriccion modulo="Servidores" permiso="editar" opcion="deshabilitar">
+		<div class="required-field-block">
+			<label for="txtServidor">Servidor</label>
+			<input id="txtServidor" type="text" size="90" maxlength="90" placeholder="Nombre servidor" ng-model="Configuracion.servidor" class="form-control">
+		</div>
+	</dir-restriccion>
+
+
+	<dir-restriccion modulo="Servidores" permiso="editar" opcion="deshabilitar">
+		<div class="required-field-block">
+			<label for="txtIP">IP</label>
+			<input id="txtIP" type="text" size="20" maxlength="20" placeholder="IP" ng-model="Configuracion.ip" class="form-control">
+		</div>
+	</dir-restriccion>
+
+	<dir-restriccion modulo="Servidores" permiso="editar" opcion="deshabilitar">
+		<div class="required-field-block">
+			<label for="txtUsuario">Sistema Operativo</label>
+			<input id="txtUsuario" type="text" size="20" maxlength="20" placeholder="Sistema operativo" ng-model="Configuracion.so" class="form-control">
+
+		</div>
+	</dir-restriccion>
+	<dir-restriccion modulo="Servidores" permiso="editar" opcion="deshabilitar">
+		<div class="required-field-block">
+			<label for="txtTipo">Tipo</label>
+			<select class="form-control" id="txtTipo" ng-model="Configuracion.tipo">
+				<option value="DESA">Desarrollo</option>
+				<option value="PPRD">Pre Produccion</option>
+				<option value="PROD">Produccion</option>
+			</select>
+		</div>
+	</dir-restriccion>
+
+
+	<dir-restriccion modulo="Servidores" permiso="editar" opcion="borrar">
+		<div class="required-field-block">
+			<label for="txtNotas">Notas</label>
+			<textarea id="txtNotas" ng-model="Configuracion.nota" style="width: 100%"></textarea>
+		</div>
+	</dir-restriccion>
+	<dir-restriccion modulo="Servidores" permiso="editar" opcion="borrar">
+		<button class="btn btn-primary" ng-click="submit($parent.aplicacion)">{{ $parent.settings.action }}</button>
+	</dir-restriccion>
+
+	</div>
+</div>
+</br>
+<div class="row">
+	<div class="col-xs-6">
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="panel-title">Aplicaciones en este servidor</div>
+			</div>
+			<div class="panel-body">
+				<ul class="list-group">
+					<li  class="list-group-item"  ng-repeat="app in Apps"><a href="#/editApp/{{app.id}}">{{app.nombre_aplicacion}}</a></li>
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+</div>

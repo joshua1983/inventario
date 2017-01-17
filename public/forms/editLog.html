@@ -1,0 +1,70 @@
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+<p ng-show="$parent.settings.servidor" class="alert alert-success">Mantenimiento programado para el servidor: <strong>{{$parent.settings.servidor}}</strong></p>
+<dir-restriccion modulo="Logs" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtMensajePublico">Mensaje Publico</label>
+	<input id="txtMensajePublico" type="text" ng-model="Log.mensaje_publico" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Logs" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtMensajePrivado">Mensaje Privado</label>
+	<input id="txtMensajePrivado" type="text" ng-model="Log.mensaje_privado" class="form-control">
+
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Logs" permiso="editar" opcion="deshabilitar">
+	<div class="required-field-block">
+	<label for="cbmNivel">Nivel </label>
+	<select id="cmbNivel" ng-model="Log.nivel" class="form-control">
+		<option selected value="0">-</option>
+		<option value="1">Interrupcion del servicio</option>
+		<option value="2">Suspension del servicio</option>
+	</select>
+	</div>
+
+</dir-restriccion>
+
+
+<div class="required-field-block">
+	<div class='input-group date'>
+		<label for="txtFechaEvento">Fecha Evento</label></br>
+		<dir-restriccion modulo="Logs" permiso="editar" opcion="deshabilitar">
+			<input type="text" id="txtFechaEvento" class="form-control"  ng-model="Log._fecha_evento" >
+		</dir-restriccion>
+	</div>
+    <script type="text/javascript">
+    $(function(){
+		$('#txtFechaEvento').datetimepicker({
+			format: "DD/MM/YYYY hh:mm:ss A"
+		});
+    });
+    </script>
+</div>
+
+<div class="required-field-block">
+	<div class='input-group date'>
+		<label for="txtFechaResolucion">Fecha Resoluci&oacute;n</label></br>
+		<dir-restriccion modulo="Logs" permiso="editar" opcion="deshabilitar">
+			<input type="text" id="txtFechaResolucion" class="form-control"  ng-model="Log._fecha_resolucion" >
+		</dir-restriccion>
+    </div>
+    <script type="text/javascript">
+    $(function(){
+		$('#txtFechaResolucion').datetimepicker({
+			format: "DD/MM/YYYY hh:mm:ss A"
+		});
+    });
+    </script>
+</div>
+
+
+<dir-restriccion modulo="Logs" permiso="editar" opcion="borrar">
+</br>
+	<button class="btn btn-primary" ng-click="guardar()">{{ $parent.settings.action }}</button>
+
+</dir-restriccion>
+

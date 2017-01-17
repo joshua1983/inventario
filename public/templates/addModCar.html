@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="col-xs-12">
+		<table>
+			<thead>
+				<th>Aplicaci&oacuten</th>
+				<th>M&oacutedulo</th>
+				<th>Caracterizaci&oacuten</th>
+				<th>Nivel</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<select name="selApp" id="selApp" ng-change="cambiaApp()" ng-model="idAplicacion" class="form-control" >
+							<option  ng-repeat="app in InventarioApp | orderBy:'nombre_aplicacion'" value="{{app.id}}">{{app.nombre_aplicacion}}</option>
+						</select>
+					</td>
+					<td>
+						<select name="selMod" id="selMod" ng-model="idModulo" class="form-control" >
+							<option  ng-repeat="mod in modulos | orderBy:'nombre_modulo'" value="{{mod.id}}">{{mod.nombre_modulo}}</option>
+						</select>
+					</td>
+					<td>
+						<select name="selCar" id="selCar" ng-model="idCaracteriza" class="form-control" >
+							<option  ng-repeat="cap in capacidades | orderBy:'nombre'" value="{{cap.id}}">{{cap.nombre}}</option>
+						</select>
+					</td>
+					<td>
+						<select class="form-control" ng-model="nivel" name="selNivel" id="selNivel">
+							<option value="0">0%</option>
+							<option value="17">17%</option>
+							<option value="33">33%</option>
+							<option value="50">50%</option>
+							<option value="67">67%</option>
+							<option value="83">83%</option>
+							<option value="100">100%</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<button class="btn btn-primary" ng-click="guardar()">Guardar</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

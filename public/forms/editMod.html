@@ -1,0 +1,208 @@
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtNombre">Nombre modulo</label>
+	<input id="txtNombre" type="text" placeholder="nombre del modulo" ng-model="modulo.nombre_modulo" class="form-control">
+</div>
+</dir-restriccion>
+
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtFormulario">Formularios</label>
+	<input id="txtFormulario" type="text" placeholder="cantidad de formularios" ng-model="modulo.formularios" class="form-control">
+
+</div>
+
+</dir-restriccion>
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtProceso">Procesos</label>
+	<input id="txtProceso" type="text" placeholder="cantidad de procesos" ng-model="modulo.procesos" class="form-control">
+
+</div>
+
+</dir-restriccion>
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+	<label for="txtReportes">Reportes</label>
+	<input id="txtReportes" type="text" placeholder="cantidad de reportes" ng-model="modulo.reportes" class="form-control">
+</div>
+
+</dir-restriccion>
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+
+<div class="required-field-block">
+	<label for="txtTablas">Tablas</label>
+	<input id="txtTablas" type="text" placeholder="cantidad de tablas" ng-model="modulo.tablas" class="form-control">
+</div>
+
+</dir-restriccion>
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+		<label for="selEstado" >Estado</label>
+		<select ng-model="modulo.estado" class="form-control">
+			
+			<option class="form-control" ng-selected="modulo.estado == 1" value="1">En producción</option>
+			<option class="form-control" ng-selected="modulo.estado == 2" value="2">En Implementación</option>
+			<option class="form-control" ng-selected="modulo.estado == 3" value="3">En Retiro</option>
+			<option class="form-control" ng-selected="modulo.estado == 4" value="4">Retirado</option>
+			<option class="form-control" ng-selected="modulo.estado == 5" value="5">No Funcional</option>
+			<option class="form-control" ng-selected="modulo.estado == 6" value="6">No Utilizado</option>
+		
+		</select>
+
+	</div>
+
+</dir-restriccion>
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+<div class="required-field-block">
+		<label for="selTipoModulo" >Tipo Modulo</label>
+		<select id="selTipoModulo" ng-model="modulo.tipomodulo" class="form-control">
+			
+			<option class="form-control" ng-selected="modulo.tipomodulo == 1" value="1">Cliente Servidor</option>
+			<option class="form-control" ng-selected="modulo.tipomodulo == 2" value="2">Web</option>
+			<option class="form-control" ng-selected="modulo.tipomodulo == 3" value="3">Cloud</option>
+			<option class="form-control" ng-selected="modulo.tipomodulo == 4" value="4">Movil</option>
+		
+		</select>
+
+	</div>
+</dir-restriccion>
+	<br>
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="borrar">
+	<a  class="btn btn-success" ng-if="settings.editar" href="#/addIng/{{modulo.id}}">Agregar Ingeniero</a>
+	<a  class="btn btn-success" ng-if="settings.editar" href="#/addFunc/{{modulo.id}}">Agregar Funcional</a>
+</dir-restriccion>
+	<br>
+	<br>
+	<br>
+<div class="panel panel-default">
+<div class="row">
+
+	<div class="col-xs-6">
+		<h4><strong>Ingenieros</strong></h4>
+		<div class="required-field-block">
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="ing in ingenieros">
+				<a href="#/editIng/{{ing.id}}">{{ing.nombres}} {{ing.apellidos}}</a>
+				<div class="pull-right action-buttons">
+				<dir-restriccion modulo="Ingenieros" permiso="editar" opcion="borrar">
+					<a href="#/editIng/{{ing.id}}">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</dir-restriccion>
+				<dir-restriccion modulo="Modulos" permiso="editar" opcion="borrar">
+					<a ng-click="borrarIngeniero(ing.id)" class="trash">
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+				</dir-restriccion>
+				</div>
+				<p>
+					<ul>
+						<li><strong>Nombre:</strong> {{ing.nombres}}</li>
+						<li><strong>Apellidos:</strong> {{ing.apellidos}}</li>
+						<li><strong>Correo: </strong>{{ing.correo}}	</li>
+						<li><strong>Celular: </strong>{{ing.celular}}	</li>
+						<li><strong>Extension: </strong>{{ing.extension}}	</li>
+						<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+						<li>
+							<strong>Nivel: </strong>
+							<select name="selEstaIng{{ing.pivot.id}}" ng-change="cambiaCapacitaIng(ing.pivot.id)" id="selEstaIng{{ing.pivot.id}}" class="form-control" ng-model="ing.pivot.principal">
+								<option value="0">No es principal</option>
+								<option value="1">Principal</option>
+							</select>
+						</li>
+						</dir-restriccion>
+						<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+						<li>
+							<strong>Capacitado:</strong>
+							<select class="form-control" ng-change="cambiaCapacitaIng(ing.pivot.id)" name="selCap{{ing.pivot.id}}" id="selCap{{ing.pivot.id}}" ng-model="ing.pivot.capacitado">
+								<option value="0">No esta capacitado</option>
+								<option value="1">Esta capacitado</option>
+							</select>
+						</li>
+						</dir-restriccion>
+						<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+						<li>
+							<strong>Estado:</strong>
+							<select class="form-control" ng-change="cambiaEstadoIng(ing.pivot.id)" name="selEstado{{ing.pivot.id}}" id="selEstado{{ing.pivot.id}}" ng-model="ing.pivot.estado">
+								<option value="0">Activo</option>
+								<option value="1">Retirado</option>
+								<option value="2">En Vacaciones</option>
+							</select>
+						</li>
+						</dir-restriccion>
+					</ul>
+				</p>
+				
+			</li>
+		</ul>
+		</div>
+	</div>
+	<div class="col-xs-6">
+		<h4><strong>Funcionales</strong></h4>
+		<div class="required-field-block">
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="fun in funcionales">
+				<a href="#/editFunc/{{fun.id}}">{{fun.nombres}} {{fun.apellidos}}</a>
+				<div class="pull-right action-buttons">
+				<dir-restriccion modulo="Funcionales" permiso="editar" opcion="borrar">
+					<a href="#/editFunc/{{fun.id}}">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</dir-restriccion>
+				<dir-restriccion modulo="Modulos" permiso="editar" opcion="borrar">
+					<a ng-click="borrarFuncional(fun.id)" class="trash">
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+				</dir-restriccion>
+				</div>
+				<p>
+					<ul>
+						<li><strong>Nombre:</strong> {{fun.nombres}}</li>
+						<li><strong>Apellidos:</strong> {{fun.apellidos}}</li>
+						<li><strong>Correo: </strong>{{fun.correo}}	</li>
+						<li><strong>Telefono: </strong>{{fun.telefono}}	</li>
+						<li><strong>Extension: </strong>{{fun.extension}}	</li>
+						<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+						<li>
+							<strong>Nivel: </strong>
+							<select name="selEstaFun{{fun.pivot.id}}" ng-change="cambiaCapacitaFun(fun.pivot.id)" id="selEstaFun{{fun.pivot.id}}" class="form-control" ng-model="fun.pivot.principal">
+								<option value="0">No es principal</option>
+								<option value="1">Principal</option>
+							</select>
+						</li>
+						</dir-restriccion>
+						<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+						<li>
+							<strong>Capacitado:</strong>
+							<select class="form-control" ng-change="cambiaCapacitaFun(fun.pivot.id)" name="selFun{{fun.pivot.id}}" id="selFun{{fun.pivot.id}}" ng-model="fun.pivot.capacitado">
+								<option value="0">No esta capacitado</option>
+								<option value="1">Esta capacitado</option>
+							</select>
+						</li>
+						</dir-restriccion>
+						<dir-restriccion modulo="Modulos" permiso="editar" opcion="deshabilitar">
+						<li>
+							<strong>Estado:</strong>
+							<select class="form-control" ng-change="cambiaCapacitaFun(fun.pivot.id)" name="selEstadoFun{{fun.pivot.id}}" id="selEstadoFun{{fun.pivot.id}}" ng-model="fun.pivot.estado">
+								<option value="0">Activo</option>
+								<option value="1">Retirado</option>
+								<option value="2">En Vacaciones</option>
+							</select>
+						</li>
+						</dir-restriccion>
+					</ul>
+				</p>
+				
+			</li>
+		</ul>
+		</div>
+	</div>
+</div>	
+</div>
+
+<dir-restriccion modulo="Modulos" permiso="editar" opcion="borrar">
+		<button class="btn btn-primary" ng-click="submit($parent.modulo)">{{ $parent.settings.action }}</button>
+</dir-restriccion>

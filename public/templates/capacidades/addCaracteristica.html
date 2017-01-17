@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-xs-6">
+
+		<div class="form-group">
+			<label for="">Capacidad</label>
+			<select name="selCar" id="selCar" ng-model="capacidad_id" class="form-control" ng-options="cap.id as cap.nombre for cap in capacidades" >
+				<option value="">---</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="">Nombre Caracteristica</label>
+			<input type="text" id="txtNombre" ng-model="nombre" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label for="">Proceso</label>
+			<select class="form-control" ng-model="nivel" name="selNivel" id="selNivel">
+				<option value="0">No existe procedimiento</option>
+				<option value="1">Existe AS-IS y esta implementado</option>
+				<option value="2">Existe TO-BE y esta implementado</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<button class="btn btn-primary" ng-click="guardar()">Guardar</button>
+		</div>
+	</div>
+</div>

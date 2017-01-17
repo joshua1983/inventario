@@ -1,0 +1,98 @@
+
+<div class="row">
+
+<div class="panel panel-default">
+	<div class="panel-heading">Estadisticas</div>
+	<div class="panel-body">
+	<div class="row">
+		<div class="col-xs-6">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Estadisticas del estado de las aplicaciones</h3>
+				</div>
+				<div class="panel-body">
+					<canvas id="AppStats" class="chart chart-doughnut" data="dataApp"  labels="labelsApp"></canvas> 
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+		
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Estadisticas de los ingenieros</h3>
+				</div>
+				<div class="panel-body">
+					<canvas id="IngMods" class="chart chart-bar" data="dataIng" labels="labelsIng" ></canvas> 
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	
+		<div class="col-xs-12">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Detalle Ingeniero - Modulo</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="col-xs-12">
+						<div class="col-xs-1">
+							<label for="txtNombresFiltro" >Nombre</label>
+						</div>
+						<div class="col-xs-3">
+							<input type="text" class="form-control" ng-model="filtroNombres" id="txtNombresFiltro" >
+						</div>
+						<div class="col-xs-1">
+							<label for="txtNombreApp">Aplicacion</label>
+						</div>
+						<div class="col-xs-3">
+							<input type="text" ng-model="filtroApp" class="form-control" id="txtNombreApp">
+						</div>
+						<div class="col-xs-1">
+							<label for="txtFiltroModulo">Modulo</label>
+						</div>
+						<div class="col-xs-3">
+							<input type="text" ng-model="filtroMod" class="form-control" id="txtFiltroModulo">
+						</div>
+					</div>
+
+					<div id="div_tabla_ing">
+					
+						<table class="table">
+							<thead>
+								<th>Nombre</th>
+								<th>Aplicacion</th>
+								<th>Modulo</th>
+								<th>Estado</th>
+							</thead>
+							<tbody>
+							
+								<tr ng-repeat="ing in dataIngModulos | filter:{nombres: filtroNombres, nombre_aplicacion: filtroApp, nombre_modulo: filtroMod}">
+									<td>{{ing.nombres}}</td>
+									<td>{{ing.nombre_aplicacion}}</td>
+									<td>{{ing.nombre_modulo}}</td>
+									<td ng-if="ing.estado == '0'">Activo</td>
+									<td ng-if="ing.estado == '1'">Retirado</td>
+									<td ng-if="ing.estado == '2'">En Vacaciones</td>
+								</tr>
+							
+							</tbody>
+							
+						
+						</table>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+			
+	</div>
+	
+  </div>
+</div>
+
+</div>
+

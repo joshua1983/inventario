@@ -1,0 +1,22 @@
+<div class="row" align="center">
+	<div class="col-xs-12">
+		<div class="col-xs-5"></div>
+		<div class="col-xs-3">
+			<div class="form-group">
+				<label for="txtUsuario">Usuario</label>
+				<input class="form-control" ng-model="usuario" type="text" id="txtUsuario">
+			</div>
+			<div class="form-group">
+				<label for="txtPwd">Contraseña</label>
+				<input class="form-control" ng-model="password" type="password" id="txtPwd">
+			</div>
+				<button ng-click="autenticar()" class="btn btn-primary">Entrar</button>
+		</div>
+	</div>
+	<div class="col-xs-6">
+		<div ng-bind="resultado" class="alert alert-success alert-dismissible" role="alert">
+		
+		</div>
+	</div>
+</div>
+

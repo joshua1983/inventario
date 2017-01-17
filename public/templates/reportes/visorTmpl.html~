@@ -1,0 +1,32 @@
+<table class="table">
+	<thead>
+		<th>Aplicacion</th>
+		<th>{{fecha[0].fechaEvento}}</th>
+		<th>{{fecha[1].fechaEvento}}</th>
+		<th>{{fecha[2].fechaEvento}}</th>
+		<th>{{fecha[3].fechaEvento}}</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="app in aplicaciones" >
+				<td>
+					<img src="img/barra_green.gif" />
+					{{app.nombre_aplicacion}}
+				</td>
+			<td>
+					<dir-log logs="app.logs[0]">
+				</dir-log>
+			</td>
+			<td>
+			</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<div class="col-xs-12" align="center">
+			<a href="" ng-click="anterior()" class="btn btn-success">Anterior</a>
+			<a href="" ng-click="reload()" class="btn btn-success">Hoy</a>
+			<a href="" ng-click="siguiente()" class="btn btn-success">Siguiente</a>
+		</div>
+	</tfoot>
+</table>
